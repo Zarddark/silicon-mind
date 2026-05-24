@@ -1,0 +1,23 @@
+{
+  "name": "silicon-mind",
+  "version": "1.0.0",
+  "description": "Silicon Mind es un simulador visual e interactivo diseñado para explicar el funcionamiento de las puertas lógicas esenciales. Desarrollado con TypeScript, el proyecto desmitifica la lógica booleana paso a paso demostrando los fundamentos de la abstracción informática a bajo nivel.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zarddark/silicon-mind.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zarddark/silicon-mind/issues"
+  },
+  "homepage": "https://github.com/Zarddark/silicon-mind#readme",
+  "devDependencies": {
+    "typescript": "^6.0.3"
+  }
+}
