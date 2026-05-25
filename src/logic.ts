@@ -73,7 +73,15 @@ export class Latch {
         }
     }
 
-    public getCurrentState(): Bit {
+    public getState(): Bit {
         return this.state;
+    }
+
+    public getSet(): Bit {
+        return this.set;
+    }
+
+    public getReset(): Bit {
+        return this.reset;
     }
 }
