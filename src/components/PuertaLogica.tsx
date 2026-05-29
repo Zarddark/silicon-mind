@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { Bit } from '../logic';
+import type { Bit } from '../types/circuit';
 
 // Definimos qué datos necesita recibir visualmente nuestra puerta
 interface Props {
