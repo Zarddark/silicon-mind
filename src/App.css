@@ -1,12 +1,43 @@
-/* Contenedor principal */
+/* ------ ESTILOS GLOBALES Y CONTENEDORES MAESTROS ------ */
+
+/* Envoltorio principal que fija la aplicacion a la pantalla para controlar las transiciones */
+.window-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 999;
+}
+
+
+/* ------ PANTALLA 1: DASHBOARD Y CUADRICULA DE PUERTAS ------ */
+
+/* Contenedor del panel principal con el ancho limitado para generar los margenes laterales vacios */
 .dashboard-container {
-  max-width: 1200px;
+max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%; 
+  height: 100vh;
+  box-sizing: border-box;
+  
+  /* Bordes laterales */
+  border-left: 1px solid #4a5568;
+  border-right: 1px solid #4a5568;
+  
+  background-color: #191a22; /* Color oscuro que unifica el fondo del panel */
+  transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
-/* Cabecera */
+/* Desplazamiento hacia arriba del panel principal cuando se selecciona una puerta */
+.window-wrapper.slide-up .dashboard-container {
+  transform: translateY(-100vh);
+}
+
+/* Encabezado */
 .dashboard-header {
   text-align: center;
   margin-bottom: 50px;
@@ -26,7 +57,7 @@
   font-size: 1.1rem;
 }
 
-/* 4 columnas por fila */
+/* Distribucion en cuadricula para las tarjetas de las puertas */
 .gates-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -34,7 +65,7 @@
   justify-content: center;
 }
 
-/* Forzamos que las dos últimas tarjetas ocupen las columnas del centro */
+/* Alineacion centrada para las dos ultimas tarjetas del catalogo */
 .gates-grid > .gate-card:nth-child(9) {
   grid-column: 2;
 }
@@ -42,10 +73,10 @@
   grid-column: 3;
 }
 
-/* TARJETA AZUL ELÉCTRICO */
+/* Tarjetas individuales de las puertas logicas */
 .gate-card {
   background: rgba(10, 25, 47, 0.7);
-  border: 2px solid #00d4ff; /* Azul eléctrico / Celeste */
+  border: 2px solid #00d4ff;
   border-radius: 16px;
   padding: 25px;
   display: flex;
@@ -58,7 +89,7 @@
   overflow: hidden;
 }
 
-/* Efecto Hover: Brillo de neón al pasar el ratón */
+/* Transicion e iluminacion neon cuando el usuario pasa el cursor sobre una tarjeta */
 .gate-card:hover {
   transform: translateY(-5px);
   border-color: #00f0ff;
@@ -66,7 +97,6 @@
               inset 0 0 15px rgba(0, 240, 255, 0.15);
 }
 
-/* Texto de la puerta */
 .gate-title {
   font-weight: 800;
   font-size: 1.1rem;
@@ -76,7 +106,6 @@
   text-shadow: 0 0 5px rgba(0, 212, 255, 0.3);
 }
 
-/* Contenedor del icono central */
 .gate-icon-container {
   height: 90px;
   display: flex;
@@ -84,6 +113,7 @@
   align-items: center;
 }
 
+/* Filtros aplicados para dar el tono azul electrico a los iconos originales */
 .gate-icon {
   max-width: 100%;
   max-height: 100%;
@@ -92,8 +122,136 @@
           drop-shadow(0 0 8px rgba(0, 212, 255, 0.6));
 }
 
-/* Icono provisional */
 .icon-placeholder {
   font-size: 2.5rem;
   color: #445566;
+}
+
+
+/* ------ PANTALLA 2: LABORATORIO Y SIMULADOR ------ */
+
+/* Contenedor del laboratorio, posicionado justo debajo del monitor en espera activa */
+.workbench-container {
+  position: absolute;
+  top: 100vh;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 40px;
+  transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+
+  /* Estetica de circuito basada en gradientes repetitivos para simular pistas electricas */
+  background-color: #05140b;
+  background-image: 
+    linear-gradient(rgba(0, 255, 100, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 100, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+  color: #ffffff;
+}
+
+/* Desplazamiento hacia la pantalla visible del laboratorio cuando el estado cambia */
+.window-wrapper.slide-up .workbench-container {
+  transform: translateY(-100vh);
+}
+
+/* Interfaz interna del circuito */
+.circuit-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.circuit-title {
+  text-align: center;
+  color: #00ff66;
+  text-shadow: 0 0 10px rgba(0, 255, 100, 0.5);
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-top: 20px;
+}
+
+/* Boton para regresar al dashboard superior */
+.back-button {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  background: rgba(10, 25, 47, 0.8);
+  border: 2px solid #00d4ff;
+  color: #00d4ff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  letter-spacing: 1px;
+}
+
+.back-button:hover {
+  background: #00d4ff;
+  color: #05140b;
+  box-shadow: 0 0 15px #00d4ff;
+}
+
+/* Espacio de trabajo horizontal que alinea las entradas, el componente y las salidas */
+.sandbox-area {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-grow: 1;
+  margin: 40px 0;
+}
+
+/* Slot o zocalo central donde se dibuja el esquema de la puerta seleccionada */
+.gate-display {
+  width: 280px;
+  height: 200px;
+  border: 2px dashed rgba(0, 255, 100, 0.4);
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(5, 20, 11, 0.6);
+  box-shadow: inset 0 0 20px rgba(0, 255, 100, 0.05);
+}
+
+/* Adaptacion de color para cambiar el icono a verde neon con resplandor integrado */
+.gate-icon-large {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+  filter: invert(61%) sepia(87%) saturate(478%) hue-rotate(97deg) brightness(101%) contrast(105%)
+          drop-shadow(0 0 12px rgba(0, 255, 100, 0.8));
+}
+
+
+/* ------ PANEL INFERIOR DE ESPECIFICACIONES (EFECTO CRISTAL) ------ */
+
+/* Bloque flotante que aprovecha filtros de desenfoque de fondo para simular un cristal */
+.info-panel-glass {
+  background: rgba(10, 25, 47, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 25px;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+.info-panel-glass h3 {
+  color: #00d4ff;
+  margin-top: 0;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+}
+
+.info-panel-glass p {
+  color: #ccc;
+  line-height: 1.5;
 }
