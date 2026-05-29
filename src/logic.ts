@@ -1,5 +1,4 @@
-// Definimos el tipo Bit para asegurarnos de que no se use un número diferente de 0 o 1
-export type Bit = 0 | 1;
+import type { Bit } from './types/circuit';
 
 // Interfaz para representar el estado de una puerta de dos entradas (AND, OR, XOR)
 export interface DualInput {
