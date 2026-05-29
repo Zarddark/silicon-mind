@@ -232,6 +232,25 @@ function App() {
 
   }, [inputA, inputB, puertaSeleccionada]);
 
+  /**
+   * Efecto específico para el Generador de Reloj (Clock).
+   * Cuando el usuario entra a la vista 'clock', activa un temporizador asíncrono
+   * que conmuta el output de 0 a 1 cíclicamente cada 1000ms (1 Hz).
+   */
+  useEffect(() => {
+    if (puertaSeleccionada !== 'clock') return;
+
+    // Iniciamos el latido del reloj (parpadeo cada 1000 milisegundos)
+    const temporizador = setInterval(() => {
+      setOutput((prev) => (prev === 0 ? 1 : 0));
+    }, 1000);
+
+    // FUNCIÓN DE LIMPIEZA (Crucial): Apaga el temporizador al salir del laboratorio
+    return () => {
+      clearInterval(temporizador);
+    };
+  }, [puertaSeleccionada]);
+
   // Busca el objeto completo de la compuerta actual para pintar descripciones e hilos
   const puertaActual = PUERTAS.find((p) => p.id === puertaSeleccionada);
 
