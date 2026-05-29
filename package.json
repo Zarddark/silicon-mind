@@ -1,25 +1,34 @@
 {
   "name": "silicon-mind",
-  "version": "1.0.0",
+  "private": true,
+  "version": "0.0.0",
   "type": "module",
-  "description": "Silicon Mind es un simulador visual e interactivo diseñado para explicar el funcionamiento de las puertas lógicas esenciales. Desarrollado con TypeScript, el proyecto desmitifica la lógica booleana paso a paso demostrando los fundamentos de la abstracción informática a bajo nivel.",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Zarddark/silicon-mind.git"
+  "dependencies": {
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Zarddark/silicon-mind/issues"
-  },
-  "homepage": "https://github.com/Zarddark/silicon-mind#readme",
   "devDependencies": {
-    "tsx": "^4.22.3",
-    "typescript": "^6.0.3"
+    "@babel/core": "^7.29.0",
+    "@eslint/js": "^10.0.1",
+    "@rolldown/plugin-babel": "^0.2.3",
+    "@types/babel__core": "^7.20.5",
+    "@types/node": "^24.12.3",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "eslint": "^10.3.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.6.0",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.59.2",
+    "vite": "^8.0.12"
   }
 }

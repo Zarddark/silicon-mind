@@ -1,7 +1,7 @@
 import { wire, notGate, andGate, orGate, xorGate, nandGate, norGate, xnorGate, Latch  } from './logic.js';
 function runTests() {
     console.log("Iniciando tests...");
-    let errores: string[] = [];
+    const errores: string[] = [];
 
     if (wire(0) !== 0 || wire(1) !== 1) {
         errores.push("wireGate");

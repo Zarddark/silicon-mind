@@ -7,8 +7,8 @@ export interface DualInput {
     b: Bit;
 }
 
-// Wire (Cable): Pasa la señal tal cual entra
-export const wire = (input: Bit): Bit => {
+// Buffer: Pasa la señal tal cual entra
+export const buffer = (input: Bit): Bit => {
     return input;
 };
 
