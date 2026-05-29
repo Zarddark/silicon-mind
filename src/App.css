@@ -317,3 +317,98 @@ max-width: 1200px;
   text-shadow: 0 0 5px rgba(0, 255, 100, 0.3);
   background: rgba(0, 255, 100, 0.02);
 }
+
+
+/* ------ COMPONENTES INTERACTIVOS DEL LABORATORIO (BOTONES Y LED) ------ */
+
+/* Alineacion vertical de los interruptores de entrada */
+.col-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  min-width: 160px;
+}
+
+/* Interruptores interactivos estilo circuito integrado */
+.interactive-switch {
+  background: #111827;
+  border: 2px solid #4b5563;
+  border-radius: 10px;
+  padding: 15px;
+  color: #9ca3af;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.interactive-switch:hover {
+  border-color: #9ca3af;
+}
+
+/* Estado activo del interruptor cuando envia un 1 logico */
+.interactive-switch.switch-on {
+  border-color: #00ff66;
+  color: #00ff66;
+  box-shadow: 0 0 15px rgba(0, 255, 100, 0.2),
+              inset 0 0 10px rgba(0, 255, 100, 0.1);
+}
+
+.switch-label {
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.switch-value {
+  font-family: monospace;
+  font-size: 1.6rem;
+}
+
+/* Contenedor de la columna de salida */
+.col-outputs {
+  display: flex;
+  justify-content: center;
+  min-width: 160px;
+}
+
+/* Componente de la bombilla LED apagada */
+.led-bulb {
+  background: #1f2937;
+  border: 2px solid #4b5563;
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #6b7280;
+  font-weight: bold;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Estado encendido del LED con resplandor radial de alta intensidad */
+.led-bulb.led-on {
+  background: #f2ff00;
+  border-color: #ffffff;
+  color: #05140b;
+  box-shadow: 0 0 40px #e5ff00, 
+              0 0 80px rgba(255, 242, 0, 0.4);
+}
+
+.led-value {
+  font-family: monospace;
+  font-size: 1.4rem;
+}
+
+/* Estado del reloj en espera */
+.clock-status {
+  color: #888;
+  font-size: 0.9rem;
+  font-style: italic;
+}
