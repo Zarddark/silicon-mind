@@ -426,33 +426,56 @@
 }
 
 /* ------ ADAPTABILIDAD RESPONSIVA (MEDIA QUERIES) ------ */
-/* Dispositivos Móviles (pantallas <= 650px) */
-@media (max-width: 650px) {
-  .dashboard-container {
-    height: 100vh;
-    padding: 20px 10px 40px 10px;
-    border-left: none;
-    border-right: none;
+/* Dispositivos Medianos tipo tablets (pantallas intermedias) */
+@media (max-width: 1100px), (max-height: 800px) {
+  .dashboard-container,
+  .workbench-container {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    height: 100vh;
   }
 
   .gates-grid {
-    /* En pantallas moviles pequeñas, forzamos 1 sola columna bien centrada */
-    grid-template-columns: 1fr;
-    gap: 15px;
-    padding: 0;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
 
-  /* Desactivamos las columnas fijas de las compuertas 9 y 10 en móvil */
   .gates-grid > .gate-card:nth-child(9),
   .gates-grid > .gate-card:nth-child(10) {
     grid-column: auto;
   }
 
+  .info-panel-glass {
+    flex-direction: column; /* La descripción y la tabla se apilan verticalmente */
+    gap: 20px;
+  }
+
+  .truth-table-container {
+    max-width: 100%;
+  }
+}
+
+/* Dispositivos Móviles (pantallas <= 650px) */
+@media (max-width: 650px) {
+  .dashboard-container {
+    padding: 20px 10px 40px 10px;
+    border-left: none;
+    border-right: none;
+  }
+
+  .workbench-container {
+    padding: 20px 15px;
+  }
+
+  .gates-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 0;
+  }
+
   .gate-card {
     padding: 15px;
-    height: auto; /* Dejamos que la altura crezca segun el contenido */
+    height: auto;
   }
 
   .gate-icon-container {
@@ -465,12 +488,6 @@
   }
 
   /* --- LABORATORIO MÓVIL --- */
-  .workbench-container {
-    padding: 20px 15px;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
   .sandbox-area {
     flex-direction: column;
     align-items: center;
@@ -480,12 +497,17 @@
     gap: 20px;
   }
 
-  .col-inputs {
-    flex-direction: row; /* Los interruptores se colocan de lado en móvil */
-    justify-content: center;
-    align-items: center;
+  .col-inputs,
+  .col-outputs {
     width: 100%;
     min-width: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .col-inputs {
+    flex-direction: row;
     gap: 15px;
   }
 
@@ -496,19 +518,10 @@
     margin: 0 auto;
   }
 
-  .col-outputs {
-    width: 100%;
-    min-width: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
   .info-panel-glass {
     width: 100%;
     box-sizing: border-box;
     margin: 0 auto;
-    flex-direction: column;
   }
 
   .back-button {
