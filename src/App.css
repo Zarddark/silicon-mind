@@ -5,7 +5,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   overflow: hidden;
   z-index: 999;
@@ -16,13 +16,15 @@
 
 /* Contenedor del panel principal con el ancho limitado para generar los margenes laterales vacios */
 .dashboard-container {
-max-width: 1200px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 30px 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  width: 100%; 
+  width: 100%;
   height: 100vh;
   box-sizing: border-box;
+
+  overflow-y: hidden; /* En escritorio forzamos que no haya scroll */
   
   /* Bordes laterales */
   border-left: 1px solid #4a5568;
@@ -40,28 +42,29 @@ max-width: 1200px;
 /* Encabezado */
 .dashboard-header {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 32px;
 }
 
 .dashboard-header h1 {
-  font-size: 3rem;
+  font-size: 2.2rem;
   font-weight: 800;
   letter-spacing: 2px;
   color: #ffffff;
   text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .dashboard-header p {
   color: #888;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 /* Distribucion en cuadricula para las tarjetas de las puertas */
 .gates-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas x 2 filas = 8 tarjetas */
+  gap: 16px;
+  width: 100%;
   justify-content: center;
 }
 
@@ -77,8 +80,8 @@ max-width: 1200px;
 .gate-card {
   background: rgba(10, 25, 47, 0.7);
   border: 2px solid #00d4ff;
-  border-radius: 16px;
-  padding: 25px;
+  border-radius: 12px;
+  padding: 15px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,23 +94,23 @@ max-width: 1200px;
 
 /* Transicion e iluminacion neon cuando el usuario pasa el cursor sobre una tarjeta */
 .gate-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   border-color: #00f0ff;
-  box-shadow: 0 0 25px rgba(0, 240, 255, 0.45), 
-              inset 0 0 15px rgba(0, 240, 255, 0.15);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.45), 
+              inset 0 0 12px rgba(0, 240, 255, 0.15);
 }
 
 .gate-title {
   font-weight: 800;
-  font-size: 1.1rem;
-  letter-spacing: 1.5px;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
   color: #00d4ff;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-shadow: 0 0 5px rgba(0, 212, 255, 0.3);
 }
 
 .gate-icon-container {
-  height: 90px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -123,7 +126,7 @@ max-width: 1200px;
 }
 
 .icon-placeholder {
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: #445566;
 }
 
@@ -135,10 +138,11 @@ max-width: 1200px;
   position: absolute;
   top: 100vh;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   box-sizing: border-box;
-  padding: 40px;
+  padding: 20px;
+  overflow-y: hidden;
   transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
 
   /* Estetica de circuito basada en gradientes repetitivos para simular pistas electricas */
@@ -161,27 +165,29 @@ max-width: 1200px;
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .circuit-title {
   text-align: center;
   color: #00ff66;
   text-shadow: 0 0 10px rgba(0, 255, 100, 0.5);
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   font-weight: 800;
   letter-spacing: 2px;
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 /* Boton para regresar al dashboard superior */
 .back-button {
   position: absolute;
-  top: 25px;
-  left: 25px;
+  top: 20px;
+  left: 20px;
   background: rgba(10, 25, 47, 0.8);
   border: 2px solid #00d4ff;
   color: #00d4ff;
-  padding: 10px 20px;
+  padding: 8px 16px;
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
@@ -201,14 +207,14 @@ max-width: 1200px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  flex-grow: 1;
-  margin: 40px 0;
+  margin: 10px 0;
+  gap: 15px;
 }
 
 /* Slot o zocalo central donde se dibuja el esquema de la puerta seleccionada */
 .gate-display {
-  width: 280px;
-  height: 200px;
+  width: 240px;
+  height: 150px;
   border: 2px dashed rgba(0, 255, 100, 0.4);
   border-radius: 16px;
   display: flex;
@@ -220,8 +226,8 @@ max-width: 1200px;
 
 /* Adaptacion de color para cambiar el icono a verde neon con resplandor integrado */
 .gate-icon-large {
-  max-width: 80%;
-  max-height: 80%;
+  max-width: 75%;
+  max-height: 75%;
   object-fit: contain;
   filter: invert(61%) sepia(87%) saturate(478%) hue-rotate(97deg) brightness(101%) contrast(105%)
           drop-shadow(0 0 12px rgba(0, 255, 100, 0.8));
@@ -237,55 +243,61 @@ max-width: 1200px;
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
-  padding: 25px;
-  max-width: 900px;
+  padding: 15px 25px;
+  max-width: 1100px;
   margin: 0 auto;
   width: 100%;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
 
   /* Alineacion vertical para centrar la descripcion y la tabla juntas */
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 30px;
   align-items: center;
-  text-align: center;
+  justify-content: space-between;
 }
 
 .info-panel-glass h3 {
   color: #00d4ff;
   margin-top: 0;
-  font-size: 1.3rem;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
   letter-spacing: 1px;
 }
 
 .info-panel-glass p {
   color: #ccc;
-  line-height: 1.5;
+  line-height: 1.4;
+  font-size: 0.95rem;
+  margin: 0;
 }
 
 .info-text {
-  width: 100%;
+  flex: 1;
+  text-align: left;
 }
 
 /* Contenedor de la tabla centrado y con un ancho controlado */
 .truth-table-container {
-  width: 100%;
-  max-width: 450px;
-  margin: 0 auto;
+  flex: 1;
+  max-width: 380px;
+  margin: 0;
 }
 
 .truth-table-container h4 {
-  margin: 0 0 15px 0;
+  margin: 0 0 8px 0;
   color: #00d4ff;
-  font-size: 1.1rem;
+  font-size: 1rem;
   letter-spacing: 1px;
+  text-align: center;
 }
 
 .truth-table-container table {
   width: 100%;
   border-collapse: collapse;
   font-family: monospace;
-  font-size: 1rem;
+  font-size: 0.9rem;
   text-align: center;
   background: rgba(0, 0, 0, 0.3);
   border-radius: 8px;
@@ -297,7 +309,7 @@ max-width: 1200px;
 .truth-table-container th {
   background: rgba(0, 212, 255, 0.1);
   color: #00d4ff;
-  padding: 12px 20px;
+  padding: 6px 12px;
   font-weight: bold;
   border-bottom: 2px solid rgba(0, 212, 255, 0.2);
   letter-spacing: 0.5px;
@@ -305,7 +317,7 @@ max-width: 1200px;
 
 /* Espaciado interno de las celdas de datos */
 .truth-table-container td {
-  padding: 10px 20px;
+  padding: 5px 12px;
   color: #ccc;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -325,8 +337,8 @@ max-width: 1200px;
 .col-inputs {
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  min-width: 160px;
+  gap: 15px;
+  min-width: 140px;
 }
 
 /* Interruptores interactivos estilo circuito integrado */
@@ -334,13 +346,13 @@ max-width: 1200px;
   background: #111827;
   border: 2px solid #4b5563;
   border-radius: 10px;
-  padding: 15px;
+  padding: 10px;
   color: #9ca3af;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   font-weight: bold;
   transition: all 0.2s ease;
 }
@@ -358,21 +370,21 @@ max-width: 1200px;
 }
 
 .switch-label {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
 .switch-value {
   font-family: monospace;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
 }
 
 /* Contenedor de la columna de salida */
 .col-outputs {
   display: flex;
   justify-content: center;
-  min-width: 160px;
+  min-width: 140px;
 }
 
 /* Componente de la bombilla LED apagada */
@@ -380,8 +392,8 @@ max-width: 1200px;
   background: #1f2937;
   border: 2px solid #4b5563;
   border-radius: 50%;
-  width: 90px;
-  height: 90px;
+  width: 75px;
+  height: 75px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -397,18 +409,18 @@ max-width: 1200px;
   background: #f2ff00;
   border-color: #ffffff;
   color: #05140b;
-  box-shadow: 0 0 40px #e5ff00, 
-              0 0 80px rgba(255, 242, 0, 0.4);
+  box-shadow: 0 0 30px #e5ff00, 
+              0 0 60px rgba(255, 242, 0, 0.4);
 }
 
 .led-value {
   font-family: monospace;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 
 /* Estado del reloj en espera */
 .clock-status {
   color: #888;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-style: italic;
 }
