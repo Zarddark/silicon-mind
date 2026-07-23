@@ -24,7 +24,7 @@
   height: 100vh;
   box-sizing: border-box;
 
-  overflow-y: hidden; /* En escritorio forzamos que no haya scroll */
+  overflow: hidden; /* En escritorio forzamos que no haya scroll */
   
   /* Bordes laterales */
   border-left: 1px solid #4a5568;
@@ -142,7 +142,7 @@
   height: 100vh;
   box-sizing: border-box;
   padding: 20px;
-  overflow-y: hidden;
+  overflow: hidden;
   transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
 
   /* Estetica de circuito basada en gradientes repetitivos para simular pistas electricas */
@@ -423,4 +423,102 @@
   color: #888;
   font-size: 0.85rem;
   font-style: italic;
+}
+
+/* ------ ADAPTABILIDAD RESPONSIVA (MEDIA QUERIES) ------ */
+/* Dispositivos Móviles (pantallas <= 650px) */
+@media (max-width: 650px) {
+  .dashboard-container {
+    height: 100vh;
+    padding: 20px 10px 40px 10px;
+    border-left: none;
+    border-right: none;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .gates-grid {
+    /* En pantallas moviles pequeñas, forzamos 1 sola columna bien centrada */
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 0;
+  }
+
+  /* Desactivamos las columnas fijas de las compuertas 9 y 10 en móvil */
+  .gates-grid > .gate-card:nth-child(9),
+  .gates-grid > .gate-card:nth-child(10) {
+    grid-column: auto;
+  }
+
+  .gate-card {
+    padding: 15px;
+    height: auto; /* Dejamos que la altura crezca segun el contenido */
+  }
+
+  .gate-icon-container {
+    height: 70px;
+  }
+
+  .gate-title {
+    margin-bottom: 10px;
+    font-size: 1rem;
+  }
+
+  /* --- LABORATORIO MÓVIL --- */
+  .workbench-container {
+    padding: 20px 15px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sandbox-area {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 15px 0;
+    gap: 20px;
+  }
+
+  .col-inputs {
+    flex-direction: row; /* Los interruptores se colocan de lado en móvil */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+    gap: 15px;
+  }
+
+  .gate-display {
+    width: 100%;
+    max-width: 280px;
+    height: 150px;
+    margin: 0 auto;
+  }
+
+  .col-outputs {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .info-panel-glass {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    flex-direction: column;
+  }
+
+  .back-button {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 0 auto 15px auto;
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box;
+    text-align: center;
+  }
 }
