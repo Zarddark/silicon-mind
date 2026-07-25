@@ -67,14 +67,6 @@
   justify-content: center;
 }
 
-/* Alineacion centrada para las dos ultimas tarjetas del catalogo */
-.gates-grid > .gate-card:nth-child(9) {
-  grid-column: 2;
-}
-.gates-grid > .gate-card:nth-child(10) {
-  grid-column: 3;
-}
-
 /* Tarjetas individuales de las puertas logicas */
 .gate-card {
   background: rgba(10, 25, 47, 0.7);
@@ -128,6 +120,18 @@
   font-size: 2rem;
   color: #445566;
 }
+
+/* Orden de las tarjetas en la cuadricula */
+.gate-buffer { order: 1; }
+.gate-not  { order: 5; }
+.gate-and  { order: 2; }
+.gate-nand { order: 6; }
+.gate-or   { order: 3; }
+.gate-nor  { order: 7; }
+.gate-xor  { order: 4; }
+.gate-xnor { order: 8; }
+.gate-latch  { order: 9; grid-column: 2;}
+.gate-clock  { order: 10; grid-column: 3;}
 
 
 /* ------ PANTALLA 2: LABORATORIO Y SIMULADOR ------ */
@@ -424,7 +428,9 @@
   font-style: italic;
 }
 
+
 /* ------ ADAPTABILIDAD RESPONSIVA (MEDIA QUERIES) ------ */
+
 /* Pantallas ultra anchas (2K / 4K) */
 @media (min-width: 2000px) {
   .dashboard-container,
@@ -467,10 +473,17 @@
     gap: 16px;
   }
 
-  .gates-grid > .gate-card:nth-child(9),
-  .gates-grid > .gate-card:nth-child(10) {
-    grid-column: auto;
-  }
+  /* Orden de las tarjetas en la cuadricula */
+  .gate-buffer { order: 1; }
+  .gate-not  { order: 2; }
+  .gate-and  { order: 3; }
+  .gate-nand { order: 4; }
+  .gate-or   { order: 5; }
+  .gate-nor  { order: 6; }
+  .gate-xor  { order: 7; }
+  .gate-xnor { order: 8; }
+  .gate-latch  { order: 9; grid-column: auto;}
+  .gate-clock  { order: 10; grid-column: auto;}
 
   .info-panel-glass {
     flex-direction: column; /* La descripción y la tabla se apilan verticalmente */

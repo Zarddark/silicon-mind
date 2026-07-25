@@ -32,7 +32,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ puertas, onSeleccionarPuer
                 {puertas.map((puerta) => (
                     <div
                         key={puerta.id}
-                        className="gate-card"
+                        className={`gate-card gate-${puerta.id.toLowerCase()}`}
                         onClick={() => onSeleccionarPuerta(puerta.id)}
                     >
                         <span className="gate-title">{puerta.nombre}</span>
