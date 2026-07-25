@@ -16,11 +16,10 @@
 
 /* Contenedor del panel principal con el ancho limitado para generar los margenes laterales vacios */
 .dashboard-container {
-  max-width: 1200px;
+  width: min(80%, 1400px);  
   margin: 0 auto;
   padding: 30px 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  width: 100%;
   height: 100vh;
   box-sizing: border-box;
 
@@ -426,13 +425,41 @@
 }
 
 /* ------ ADAPTABILIDAD RESPONSIVA (MEDIA QUERIES) ------ */
+/* Pantallas ultra anchas (2K / 4K) */
+@media (min-width: 2000px) {
+  .dashboard-container,
+  .workbench-container {
+    zoom: 1.35; 
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+  }
+}
+
+/* Pantallas 4K puras (3840px+) metemos un zoom mayor */
+@media (min-width: 3000px) {
+  .dashboard-container,
+  .workbench-container {
+    zoom: 1.8;
+  }
+}
+
 /* Dispositivos Medianos tipo tablets (pantallas intermedias) */
 @media (max-width: 1100px), (max-height: 800px) {
   .dashboard-container,
   .workbench-container {
     overflow-y: auto;
+    /* Habilitamos el scroll pero ocultando la barra */
     -webkit-overflow-scrolling: touch;
-    height: 100vh;
+    scrollbar-width: none; /* Firefox y navegadores modernos que soportan la especificación estándar */
+    -ms-overflow-style: none; /* Internet Explorer y Edge antiguo */
+    height: 100%;
+  }
+
+  /* Oculta la barra en navegadores basados en WebKit (Chrome, Safari, Edge moderno, Opera) */
+  .dashboard-container::-webkit-scrollbar,
+  .workbench-container::-webkit-scrollbar {
+    display: none;
   }
 
   .gates-grid {
@@ -458,6 +485,7 @@
 /* Dispositivos Móviles (pantallas <= 650px) */
 @media (max-width: 650px) {
   .dashboard-container {
+    width: 100%;
     padding: 20px 10px 40px 10px;
     border-left: none;
     border-right: none;
